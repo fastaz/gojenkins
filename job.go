@@ -24,6 +24,7 @@ import (
 	"path"
 	"strconv"
 	"strings"
+	"ioutil"
 )
 
 type Job struct {
