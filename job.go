@@ -447,6 +447,12 @@ func (j *Job) InvokeSimple(ctx context.Context, params map[string]string) (int64
 	}
 
 	if resp.StatusCode != 200 && resp.StatusCode != 201 {
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			fmt.Println(err)
+			return 0, err
+		}
+		fmt.Println(string(body))
 		return 0, fmt.Errorf("Could not invoke job %q: %s", j.GetName(), resp.Status)
 	}
 
